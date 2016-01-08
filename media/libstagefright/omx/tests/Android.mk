@@ -18,7 +18,9 @@ LOCAL_MODULE := omx_tests
 
 LOCAL_MODULE_TAGS := tests
 
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 
 include $(BUILD_EXECUTABLE)
 

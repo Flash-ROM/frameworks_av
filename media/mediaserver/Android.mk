@@ -36,7 +36,9 @@ LOCAL_C_INCLUDES := \
     frameworks/av/services/mediaresourcemanager \
 
 LOCAL_MODULE:= mediaserver
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 
 LOCAL_INIT_RC := mediaserver.rc
 

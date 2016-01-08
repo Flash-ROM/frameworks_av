@@ -42,7 +42,9 @@ LOCAL_MODULE:= drmserver
 
 LOCAL_MODULE_TAGS := optional
 
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 
 LOCAL_INIT_RC := drmserver.rc
 
