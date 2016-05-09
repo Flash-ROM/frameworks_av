@@ -512,6 +512,12 @@ void NuCachedSource2::restartPrefetcherIfNecessary_l(
 }
 
 ssize_t NuCachedSource2::readAt(off64_t offset, void *data, size_t size) {
+
+    if (offset < 0 || size > (size_t)mHighwaterThresholdBytes) {
+        ALOGE("Illegal offset/size, offset: %lld size: %zu", offset, size);
+        return -EINVAL;
+    }
+
     Mutex::Autolock autoSerializer(mSerializer);
 
     ALOGV("readAt offset %lld, size %zu", (long long)offset, size);
