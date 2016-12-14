@@ -310,16 +310,9 @@ LVREV_ReturnStatus_en LVREV_ApplyNewSettings (LVREV_Instance_st     *pPrivate)
         (pPrivate->bFirstControl        == LVM_TRUE))
     {
 
-        LVM_INT32               G[4];                       /* Feedback gain (Q7.24) */
+        LVM_INT32               G[4] = {0};                 /* Feedback gain (Q7.24) */
 
-        if(pPrivate->NewParams.T60 == 0)
-        {
-            G[3] = 0;
-            G[2] = 0;
-            G[1] = 0;
-            G[0] = 0;
-        }
-        else
+        if(pPrivate->NewParams.T60)
         {
             LVM_INT32   Temp1;
             LVM_INT32   Temp2;
